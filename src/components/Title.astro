@@ -1,0 +1,10 @@
+---
+interface Props {
+	disableTitle?: boolean;
+	title: string;
+}
+
+const { title, disableTitle } = Astro.props;
+---
+
+{!disableTitle && <h1 class="text-4xl font-bold mb-12">{title}</h1>}
