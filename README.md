@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div align="center">
     <img src="./public/kiss_banner.svg" alt="KISS Homelab Dashboard" style="width: 60%; max-width: 400px;" />
 </div>
 
