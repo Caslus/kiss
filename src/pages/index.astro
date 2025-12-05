@@ -1,25 +1,7 @@
 ---
-import Service from "../components/Service.astro";
-import { readConfig } from "../utils/lib.ts";
-
-import "../styles/global.css";
 import Background from "../components/Background.astro";
-import Logo from "../components/Logo.astro";
-import Title from "../components/Title.astro";
-
-const config = await readConfig();
-if (!config) {
-	throw new Error(
-		"Failed to load configuration. Please check application log for details.",
-	);
-}
-
-enum Width {
-	ROWS_1 = "max-w-xl",
-	ROWS_2 = "max-w-2xl",
-	ROWS_3 = "max-w-4xl",
-	ROWS_4 = "max-w-7xl",
-}
+import ServiceList from "../components/ServiceList";
+import "../styles/global.css";
 ---
 <html lang="en">
 	<link rel="stylesheet" href="node_modules/modern-normalize/modern-normalize.css">
@@ -27,24 +9,11 @@ enum Width {
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/kiss_favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<title>{config.title} | KISS</title>
+		<title>Loading configuration • KISS</title>
 	</head>
 	 <body class="font-sans text-gray-200">
 		<Background>
-		<Logo config={config} />
-		<Title title={config.title} disableTitle={config.disableTitle} />
-		<ul class={`flex flex-row flex-wrap justify-center ${Width.ROWS_2} gap-2`}>
-			{config.services.map((service) => (
-				<Service
-					service={service}
-					checkHealth={
-						service.overrideCheckHealth !== undefined
-							? service.overrideCheckHealth
-							: config.checkHealth && (service.internalUrl || service.url) !== undefined
-					}
-				/>
-			))}
-		</ul>
+			<ServiceList client:only="preact"/>
 		</Background>
 	</body>
 </html>

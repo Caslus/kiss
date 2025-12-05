@@ -27,4 +27,4 @@ pnpm-debug.log*
 .vscode/
 
 # kiss
-config.toml
+config.json

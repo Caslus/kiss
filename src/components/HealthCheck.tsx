@@ -29,7 +29,8 @@ export const HealthCheck = ({ serviceUrl, classes }: Props) => {
 		} else {
 			setHealthy(false);
 		}
-	}, []);
+	}, [serviceUrl]);
+
 	return (
 		<div
 			class={`before:content-[''] w-4 h-4 rounded-full shadow-glow animate-glow-flicker

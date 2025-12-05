@@ -6,6 +6,7 @@
 		"dev": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
+		"start": "astro build && cp ./config.json ./dist/config.json && astro preview",
 		"astro": "astro"
 	},
 	"dependencies": {
@@ -15,7 +16,6 @@
 		"modern-normalize": "^3.0.1",
 		"preact": "^10.27.2",
 		"tailwindcss": "^4.1.17",
-		"toml": "^3.0.0",
 		"zod": "^4.1.12"
 	},
 	"devDependencies": {
