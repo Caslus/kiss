@@ -1,3 +1,4 @@
+LABEL org.opencontainers.image.source https://github.com/caslus/kiss
 # ------------------- BUILD STAGE -------------------
 FROM node:lts-alpine AS build
 ENV PNPM_HOME="/pnpm"
