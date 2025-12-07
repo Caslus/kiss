@@ -29,7 +29,7 @@ version: '3.8'
 
 services:
   homepage:
-    image: caslus/kiss:latest
+    image: ghcr.io/caslus/kiss:latest
     container_name: kiss
     ports:
       - "8080:8080"
@@ -54,7 +54,7 @@ docker run \
   -p 8080:8080 \
   -v ./config.json:/app/external/config.json \
   --restart unless-stopped \
-  caslus/kiss:latest
+  ghcr.io/caslus/kiss:latest
 ```
 ---
 
