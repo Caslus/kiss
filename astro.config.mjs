@@ -4,7 +4,7 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://caslus.github.io/',
+	site: 'https://caslus.github.io',
 	base: '/kiss',
 	integrations: [
 		starlight({
