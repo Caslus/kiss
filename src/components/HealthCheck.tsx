@@ -13,6 +13,7 @@ export const HealthCheck = ({ serviceUrl, classes }: Props) => {
 			const request: Request = new Request(url, {
 				method: "HEAD",
 				mode: "no-cors",
+				cache: "no-cache",
 			});
 			await fetch(request).then(() => {
 				setHealthy(true);

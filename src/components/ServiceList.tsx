@@ -21,7 +21,9 @@ export default function ServiceList() {
 	const [error, setError] = useState<string | null>(null);
 
 	useEffect(() => {
-		fetch("/config.json")
+		fetch("/config.json", {
+			cache: "no-cache",
+		})
 			.then((res) => {
 				if (!res.ok) {
 					throw new Error(`HTTP error! status: ${res.status}`);
