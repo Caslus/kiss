@@ -1,0 +1,20 @@
+---
+title: Local Development
+description: Instructions for setting up a local development environment for KISS.
+---
+
+To set up a local development environment for KISS, you'll need to have [Node.js](https://nodejs.org/) and [pnpm](https://pnpm.io/) installed on your machine.
+
+After cloning the KISS repository, follow these steps:
+
+1.  **Install dependencies:**
+    ```sh
+    pnpm install
+    ```
+2.  **Run development server:**
+    ```sh
+    pnpm dev
+    ```
+    *(Requires a local `config.json` file for the dev server. You can copy the example from the root directory and rename it to `config.json`.)*
+
+You can now access the KISS application using the dev server at `http://localhost:4321`. Any changes you make to the source code will automatically reload the application in your browser.

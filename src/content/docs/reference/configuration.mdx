@@ -1,0 +1,101 @@
+---
+title: Configuration Reference
+description: Detailed reference for configuring KISS using the config.json file.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## Configure the `config.json` file
+KISS is configured using a `config.json` file that you provide. Below is a detailed reference of the configuration options available.
+
+### `title` **(required)**
+**type**: `string`
+
+The title of your KISS homepage. This will be displayed at the top of the page unless disabled.
+This is also used as the page title in the browser tab.
+
+### `checkHealth`
+**type**: `boolean`
+
+**default**: `false`
+
+If set to `true`, KISS will check the health of each service by making a request to its URL or internal URL and indicate if the service is reachable.
+
+### `disableLogo`
+**type**: `boolean`
+
+**default**: `false`
+
+If set to `true`, the logo will not be displayed on the homepage. This includes both the default logo and any custom logo you may have set.
+
+### `disableTitle`
+**type**: `boolean`
+
+**default**: `false`
+
+If set to `true`, the title will not be displayed on the homepage. This can be useful for a cleaner look if you prefer not to show the title.
+
+### `disableFooter`
+**type**: `boolean`
+
+**default**: `false`
+
+If set to `true`, the footer section at the bottom of the homepage will be hidden.
+
+### `customLogo`
+**type**: `string` (URL or local path)
+
+You can provide a URL or a local path to a custom logo image to be displayed on the homepage. If not set, the default KISS logo will be used.
+
+<Aside type="caution">This has not been fully implemented yet, it will only work if you manually add an image to the nginx html folder and point to it with a local path (e.g. `./local-logo.svg`).</Aside>
+
+### `services` **(required)**
+**type**: `array` of [service](#service-object) objects.
+
+An array of service objects that define the services to be displayed on the homepage. Refer to the [service](#service-object) section for details on how to configure each service.
+
+There should be at least one service defined in this array.
+
+---
+
+
+## Service Object
+Each service object in the `services` array can have the following properties:
+
+### `id` **(required)**
+**type**: `string`
+
+A unique identifier for the service. This is used internally and should not repeat across services.
+
+### `displayName` **(required)**
+**type**: `string`
+
+The name of the service as it will appear on the homepage. This should be a user-friendly name and can include spaces and capitalization.
+
+### `url`
+**type**: `string` (URL)
+
+The public URL of the service. This is the link that users will be directed to when they click on the service card.
+
+If health check is enabled for this service and `internalUrl` is not provided, this URL will also be used to check if the service is reachable.
+
+### `internalUrl`
+**type**: `string` (URL)
+
+An internal URL for the service, typically used for health checks. This is useful if you want to check a different endpoint than the one users will visit.
+
+If health check is enabled for this service, this URL will be used to check if the service is reachable. If not provided, the `url` will be used instead.
+
+### `iconUrl`
+**type**: `string` (URL)
+
+A URL to an icon image representing the service. This icon will be displayed on the service card.
+
+If not provided, no icon will be displayed.
+
+<Aside>You can use any image hosting service or a CDN to host your icons. In the future, these icons will be cached and served locally for better performance and offline availability.</Aside>
+
+### `overrideCheckHealth`
+**type**: `boolean`
+
+If defined, this value will override the global `checkHealth` setting for this specific service. This allows you to enable or disable health checks on a per-service basis.

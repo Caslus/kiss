@@ -1,24 +1,17 @@
 {
-	"name": "kiss",
-	"type": "module",
-	"version": "0.0.1",
-	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview",
-		"start": "astro build && cp ./config.json ./dist/config.json && astro preview",
-		"astro": "astro"
-	},
-	"dependencies": {
-		"@astrojs/preact": "^4.1.3",
-		"@tailwindcss/vite": "^4.1.17",
-		"astro": "^5.16.4",
-		"modern-normalize": "^3.0.1",
-		"preact": "^10.27.2",
-		"tailwindcss": "^4.1.17",
-		"zod": "^4.1.12"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.3.6"
-	}
+  "name": "kiss-docs",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.37.0",
+    "astro": "^5.6.1",
+    "sharp": "^0.34.2"
+  }
 }
