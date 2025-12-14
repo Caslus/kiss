@@ -9,10 +9,14 @@ export default function Logo({ config }: Props) {
 		return null;
 	}
 
+	const usingCustomLogo = Boolean(
+		config?.customLogo && config.customLogo.length > 0,
+	);
+
 	return (
 		<img
-			src={config?.customLogo ?? "./kiss_logo.png"}
-			alt={config?.customLogo ? "Custom Logo" : "KISS Logo"}
+			src={usingCustomLogo ? config?.customLogo : "./kiss_logo.png"}
+			alt={usingCustomLogo ? "Custom Logo" : "KISS Logo"}
 			className="pb-10 w-96 select-none"
 			draggable={false}
 		/>

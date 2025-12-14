@@ -13,16 +13,16 @@ RUN pnpm run build
 
 # ------------------- RUNTIME STAGE -------------------
 FROM nginx:alpine AS runtime
-RUN apk add --no-cache bash
+RUN apk add --no-cache bash curl jq
 
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY default.config.json /app/default/config.json 
 
 
-COPY entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/entrypoint.sh
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+COPY scripts/ /usr/local/bin/scripts/
+RUN chmod +x /usr/local/bin/scripts/*.sh
+ENTRYPOINT ["/usr/local/bin/scripts/entrypoint.sh"]
 
 CMD []
 

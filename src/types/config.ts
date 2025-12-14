@@ -8,6 +8,7 @@ const ServiceSchema = z.object({
 	iconUrl: z
 		.url("Service icon URL must be a valid URL")
 		.or(z.string().startsWith("./"))
+		.or(z.string().length(0))
 		.optional(),
 	overrideCheckHealth: z.boolean().optional(),
 });
@@ -21,6 +22,7 @@ const ConfigSchema = z.object({
 	customLogo: z
 		.url("Custom logo URL must be a valid URL")
 		.or(z.string().startsWith("./"))
+		.or(z.string().length(0))
 		.optional(),
 
 	services: z
