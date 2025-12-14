@@ -2,6 +2,7 @@ import { useEffect, useState } from "preact/hooks";
 
 import type { Config } from "../types/config";
 import ConfigSchema from "../types/config";
+import { hasDuplicateServiceIds } from "../utils/validation";
 import ErrorMessage from "./ErrorMessage";
 import Footer from "./Footer";
 import Logo from "./Logo";
@@ -33,6 +34,13 @@ export default function ServiceList() {
 			.then((data) => {
 				try {
 					const validatedConfig = ConfigSchema.parse(data);
+
+					if (hasDuplicateServiceIds(validatedConfig)) {
+						throw new Error(
+							"Duplicate service IDs found in configuration. Each service must have a unique ID.",
+						);
+					}
+
 					setConfig(validatedConfig);
 					document.title = `${validatedConfig.title} • KISS`;
 				} catch (e) {

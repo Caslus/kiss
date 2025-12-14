@@ -9,7 +9,7 @@ const ServiceSchema = z.object({
 		.url("Service icon URL must be a valid URL")
 		.or(z.string().startsWith("./"))
 		.optional(),
-	overrideCheckHealth: z.boolean().optional(), // if empty, use global config, otherwise use this value
+	overrideCheckHealth: z.boolean().optional(),
 });
 
 const ConfigSchema = z.object({
