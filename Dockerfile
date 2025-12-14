@@ -1,4 +1,3 @@
-LABEL org.opencontainers.image.source https://github.com/caslus/kiss
 # ------------------- BUILD STAGE -------------------
 FROM node:lts-alpine AS build
 ENV PNPM_HOME="/pnpm"
@@ -28,3 +27,5 @@ ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD []
 
 EXPOSE 8080
+
+LABEL org.opencontainers.image.source=https://github.com/caslus/kiss
