@@ -19,18 +19,14 @@ The fastest way to deploy KISS is using **Docker Compose**, but you can also use
 Use the following `docker-compose.yml` file:
 
 ```yaml
-version: '3.8'
-
 services:
-  homepage:
+  kiss:
     image: ghcr.io/caslus/kiss:latest
     container_name: kiss
     ports:
       - "8080:8080"
     volumes:
-    # change ./config.json to the path of your config file
-    # or create one in the same directory as this docker-compose.yml
-      - ./config.json:/app/external/config.json
+      - ./data:/app/external
     restart: unless-stopped
 ```
 
@@ -45,13 +41,13 @@ docker-compose up -d
 
 ### Run using `docker run`
 
-Use the following command, adjusting the path to your `config.json` file as needed:
+Use the following command, adjusting the path to your config folder as needed:
 
 ```bash
 docker run \
   --name kiss \
   -p 8080:8080 \
-  -v ./config.json:/app/external/config.json \
+  -v ./data:/app/external \
   --restart unless-stopped \
   ghcr.io/caslus/kiss:latest
 ```
@@ -62,13 +58,12 @@ docker run \
 
 
 ## Configuration File
-To set up your own `config.json`, you can start with this example:
+Inside the folder specified when running the docker container, create a `config.json` file, then you can start with this example:
 
 ```json
 {
   "title": "My Awesome Homelab",
   "checkHealth": true,
-  "customLogo": "./local-logo.svg",
   "services": [
     {
       "id": "plex",

@@ -1,0 +1,53 @@
+---
+title: Custom Images
+description: This guide explains how to add and use your own image files for logos and service icons within your KISS configuration.
+---
+This guide explains how to add and use your own image files for logos and service icons within your KISS configuration.
+
+### Prepare Your Assets Folder
+To start, you need a dedicated folder for your images:
+  - **Create the Folder**: Inside your defined KISS config folder, create a new subdirectory named `assets`.
+  - **Place Your Images**: Put all of your custom image files into this new `assets` folder.
+
+### Supported Image Formats
+KISS will only recognize and inject files with the following extensions into the Docker container:
+  - `png`
+  - `jpg`
+  - `jpeg`
+  - `gif`
+  - `svg`
+  - `webp`
+
+### Reference Custom Images in Configuration
+Once your images are in the `assets` folder, you can reference them using a relative path starting with `./assets/` followed by the filename.
+
+You can use custom images with the following configuration properties:
+
+|  Property  |  Description                |
+|------------|-----------------------------|
+| **[customLogo](/kiss/reference/configuration/#customlogo)** | Used in the root configuration object to set the main header logo. |
+| **[iconUrl](/kiss/reference/configuration/#iconurl)** | Used within a service object to set the icon for that specific service. |
+
+
+#### 💡 Example Configuration
+Here is how you would use a file named `file.jpg` for both the main logo and a service icon in your config.json:
+
+```json
+{
+  "title": "My Awesome Homelab",
+  "checkHealth": true,
+  "customLogo": "./assets/file.jpg",
+  "services": [
+    {
+      "id": "some-service",
+      "displayName": "Some local service",
+      "internalUrl": "http://local-service:1234",
+      "iconUrl": "./assets/file.jpg",
+      "overrideCheckHealth": false
+    }
+  ]
+}
+```
+
+### Apply Changes
+After modifying your configuration file and placing your images in the `assets` folder, you must **restart the KISS Docker container** for the changes to take effect. Your custom images will then be injected and displayed on your KISS homepage.

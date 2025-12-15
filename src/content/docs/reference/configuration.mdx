@@ -46,8 +46,7 @@ If set to `true`, the footer section at the bottom of the homepage will be hidde
 **type**: `string` (URL or local path)
 
 You can provide a URL or a local path to a custom logo image to be displayed on the homepage. If not set, the default KISS logo will be used.
-
-<Aside type="caution">This has not been fully implemented yet, it will only work if you manually add an image to the nginx html folder and point to it with a local path (e.g. `./local-logo.svg`).</Aside>
+For more information on custom images, refer to **[this page](/kiss/reference/custom-images)**.
 
 ### `services` **(required)**
 **type**: `array` of [service](#service-object) objects.
@@ -91,9 +90,10 @@ If health check is enabled for this service, this URL will be used to check if t
 
 A URL to an icon image representing the service. This icon will be displayed on the service card.
 
-If not provided, no icon will be displayed.
+You can provide a URL or a local path to a custom icon image. If not provided, no icon will be displayed.
+For more information on custom images, refer to **[this page](/kiss/reference/custom-images)**.
 
-<Aside>You can use any image hosting service or a CDN to host your icons. In the future, these icons will be cached and served locally for better performance and offline availability.</Aside>
+<Aside>You can use any image hosting service or a CDN to host your icons. These icons are pre-fetched on container startup and served locally for better performance and offline availability.</Aside>
 
 ### `overrideCheckHealth`
 **type**: `boolean`
