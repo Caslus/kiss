@@ -10,16 +10,14 @@ export const HealthCheck = ({ serviceUrl, classes }: Props) => {
 
 	async function healthCheck(url: string) {
 		try {
-			const request: Request = new Request(url, {
-				method: "HEAD",
-				mode: "no-cors",
-				cache: "no-cache",
-			});
-			await fetch(request).then(() => {
-				setHealthy(true);
-			});
+			const response = await fetch(
+				`/api/health?url=${encodeURIComponent(url)}`,
+			);
+			const data = await response.json();
+
+			setHealthy(data.healthy);
 		} catch (error) {
-			console.log(error);
+			console.error("Health check failed:", error);
 			setHealthy(false);
 		}
 	}

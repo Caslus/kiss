@@ -22,6 +22,9 @@ echo "Starting Entrypoint..."
 # 3. Local Assets Injection
 /usr/local/bin/scripts/injectAssets.sh
 
+# 4. Start Health Check Proxy
+/usr/local/bin/health-check-proxy &
+
 # --- Start the Web Server (Nginx) ---
 echo "--- All configuration tasks complete. Starting Nginx ---"
 exec nginx -g 'daemon off;'
